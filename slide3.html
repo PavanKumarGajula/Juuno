@@ -2,98 +2,257 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Laptop Migration – Slide 4</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Migration – Slide 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1920px; height: 1080px; overflow: hidden; font-family: 'Sora', sans-serif; background: #020608; }
-  .page { width: 1920px; height: 1080px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .bg-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; filter: brightness(0.13) saturate(0.3); z-index: 0; }
-  .overlay { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,212,232,0.05) 0%, transparent 65%), radial-gradient(ellipse 100% 50% at 50% 0%, rgba(0,0,0,0.95) 0%, transparent 60%), radial-gradient(ellipse 100% 50% at 50% 100%, rgba(0,0,0,0.98) 0%, transparent 60%), linear-gradient(180deg, rgba(2,6,8,0.6) 0%, rgba(2,6,8,0.05) 30%, rgba(2,6,8,0.05) 70%, rgba(2,6,8,0.95) 100%); }
-  .top-line { position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 20; background: linear-gradient(90deg, transparent 5%, #00D4E8 30%, #73F3FF 50%, #00D4E8 70%, transparent 95%); animation: shimmer 3s ease-in-out infinite; }
-  @keyframes shimmer { 0%,100%{opacity:.8} 50%{opacity:1;filter:brightness(1.5)} }
-  .corner { position: absolute; width: 22px; height: 22px; z-index: 10; }
-  .corner.tl { top: 44px; left: 88px; border-top: 1.5px solid rgba(0,212,232,.4); border-left: 1.5px solid rgba(0,212,232,.4); }
-  .corner.tr { top: 44px; right: 88px; border-top: 1.5px solid rgba(0,212,232,.4); border-right: 1.5px solid rgba(0,212,232,.4); }
-  .corner.bl { bottom: 44px; left: 88px; border-bottom: 1.5px solid rgba(0,212,232,.4); border-left: 1.5px solid rgba(0,212,232,.4); }
-  .corner.br { bottom: 44px; right: 88px; border-bottom: 1.5px solid rgba(0,212,232,.4); border-right: 1.5px solid rgba(0,212,232,.4); }
-  canvas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-  .layout { position: relative; z-index: 10; width: 1640px; display: flex; align-items: center; justify-content: space-between; gap: 80px; }
-  .illustration { flex: 0 0 580px; display: flex; align-items: center; justify-content: center; opacity: 0; animation: fadeUp 1s .2s cubic-bezier(.22,1,.36,1) forwards; }
-  .illustration img { width: 580px; height: auto; filter: drop-shadow(0 0 40px rgba(0,212,232,0.15)); animation: floatIllus 5s ease-in-out infinite; }
-  @keyframes floatIllus { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
-  .right { flex: 1; display: flex; flex-direction: column; gap: 0; align-items: flex-start; }
-  .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; opacity: 0; animation: fadeUp .8s .3s cubic-bezier(.22,1,.36,1) forwards; }
-  .eyebrow-line { width: 36px; height: 1px; background: #00D4E8; opacity: .5; }
-  .eyebrow-text { font-size: 13px; font-weight: 400; letter-spacing: .26em; text-transform: uppercase; color: rgba(0,212,232,.8); }
-  .headline { font-size: 110px; font-weight: 900; line-height: .92; letter-spacing: -.04em; color: #fff; margin-bottom: 48px; opacity: 0; animation: fadeUp .95s .42s cubic-bezier(.22,1,.36,1) forwards; }
-  .headline .accent { color: #00D4E8; display: block; }
-  .info-blocks { display: flex; flex-direction: column; gap: 16px; width: 100%; }
-  .info-block { display: flex; align-items: center; gap: 26px; padding: 26px 34px; border-radius: 16px; opacity: 0; }
-  .info-block:nth-child(1) { animation: fadeUp .75s .55s ease forwards; background: rgba(0,212,232,.07); border: 1px solid rgba(0,212,232,.3); }
-  .info-block:nth-child(2) { animation: fadeUp .75s .70s ease forwards; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); }
-  .info-block:nth-child(3) { animation: fadeUp .75s .85s ease forwards; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); }
-  .block-icon { font-size: 48px; line-height: 1; flex-shrink: 0; }
-  .block-text { display: flex; flex-direction: column; gap: 4px; }
-  .block-label { font-size: 11px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(0,212,232,.55); }
-  .block-value { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: -.02em; line-height: 1.1; }
-  .block-sub { font-size: 15px; font-weight: 300; color: rgba(255,255,255,.38); }
-  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;font-family:'Sora',sans-serif;background:#020608}
+.p{width:1920px;height:1080px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:36px 80px}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.18) saturate(.4);z-index:0}
+.ov{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 80% 70% at 50% 50%,rgba(0,212,232,.04) 0%,transparent 65%),radial-gradient(ellipse 100% 45% at 50% 0%,rgba(0,0,0,.98) 0%,transparent 55%),radial-gradient(ellipse 100% 45% at 50% 100%,rgba(0,0,0,.98) 0%,transparent 55%),linear-gradient(180deg,rgba(2,6,8,.85) 0%,rgba(2,6,8,.1) 25%,rgba(2,6,8,.1) 75%,rgba(2,6,8,.98) 100%)}
+.tl{position:absolute;top:0;left:0;right:0;height:3px;z-index:20;background:linear-gradient(90deg,transparent 5%,#00D4E8 30%,#73F3FF 50%,#00D4E8 70%,transparent 95%);animation:sh 3s ease-in-out infinite}
+@keyframes sh{0%,100%{opacity:.8}50%{opacity:1;filter:brightness(1.5)}}
+.co{position:absolute;width:22px;height:22px;z-index:10}
+.co.a{top:44px;left:60px;border-top:1.5px solid rgba(0,212,232,.4);border-left:1.5px solid rgba(0,212,232,.4)}
+.co.b{top:44px;right:60px;border-top:1.5px solid rgba(0,212,232,.4);border-right:1.5px solid rgba(0,212,232,.4)}
+.co.c{bottom:44px;left:60px;border-bottom:1.5px solid rgba(0,212,232,.4);border-left:1.5px solid rgba(0,212,232,.4)}
+.co.d{bottom:44px;right:60px;border-bottom:1.5px solid rgba(0,212,232,.4);border-right:1.5px solid rgba(0,212,232,.4)}
+canvas{position:absolute;inset:0;z-index:2;pointer-events:none}
+
+/* ── TOP ── */
+.top{position:relative;z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.ey{display:flex;align-items:center;gap:14px}
+.el{width:36px;height:1px;background:#00D4E8;opacity:.5}
+.et{font-size:13px;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:rgba(0,212,232,.8)}
+h1{font-size:86px;font-weight:900;line-height:.95;letter-spacing:-.04em;color:#fff;text-align:center}
+h1 span{color:#ef4444}
+.sb{font-size:18px;font-weight:300;color:rgba(255,255,255,.45);text-align:center}
+
+/* ── MIDDLE ── */
+.mid{position:relative;z-index:10;display:flex;gap:40px;width:100%;flex:1;min-height:0;margin:14px 0;align-items:stretch}
+
+/* ── PREMIUM CLOCK ── */
+.clock-col{display:flex;flex-direction:column;align-items:center;justify-content:center;width:260px;flex-shrink:0;gap:16px}
+
+.clock-outer{position:relative;width:240px;height:240px;display:flex;align-items:center;justify-content:center}
+.clock-outer svg{position:absolute;inset:0}
+
+.clock-face{position:relative;z-index:5;display:flex;flex-direction:column;align-items:center;gap:0}
+.clock-time{font-family:'JetBrains Mono',monospace;font-size:58px;font-weight:700;color:#fff;line-height:1;letter-spacing:-.02em;transition:text-shadow .2s ease}
+.clock-ampm{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#ef4444;line-height:1;letter-spacing:.05em}
+.clock-label{font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,68,68,.75);margin-top:5px;animation:glw 1s ease-in-out infinite}
+@keyframes glw{0%,100%{opacity:.7;text-shadow:none}50%{opacity:1;text-shadow:0 0 14px rgba(239,68,68,.9)}}
+
+.clock-info{display:flex;flex-direction:column;align-items:center;gap:4px}
+.clock-sub{font-size:11px;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);text-align:center}
+
+/* Step indicator */
+.step-ind{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 24px;border-radius:14px;background:rgba(0,212,232,.06);border:1px solid rgba(0,212,232,.15);width:100%}
+.step-ind-num{font-family:'JetBrains Mono',monospace;font-size:48px;font-weight:700;color:#00D4E8;line-height:1;transition:all .3s ease}
+.step-ind-label{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,212,232,.5)}
+.step-ind-text{font-size:13px;font-weight:600;color:rgba(255,255,255,.5);text-align:center;line-height:1.3;transition:all .3s ease;min-height:32px}
+
+/* ── TERMINAL ── */
+.terminal{flex:1;background:rgba(0,0,0,.6);border:1px solid rgba(0,212,232,.18);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;height:100%}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 20px;background:rgba(0,0,0,.5);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
+.td{width:11px;height:11px;border-radius:50%}
+.td:nth-child(1){background:#ef4444}
+.td:nth-child(2){background:#f59e0b}
+.td:nth-child(3){background:#22c55e}
+.tt{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.06em;margin-left:8px}
+.term-body{padding:0 16px;flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+
+.sr{display:flex;align-items:center;gap:16px;padding:9px 14px;border-radius:10px;transition:background .35s ease,transform .35s ease,border-color .35s ease;border:1px solid transparent;cursor:default}
+.sr.active{background:rgba(0,212,232,.09);border-color:rgba(0,212,232,.25);transform:translateX(6px)}
+.sr.active-warn{background:rgba(239,68,68,.09);border-color:rgba(239,68,68,.3);transform:translateX(6px)}
+
+.ss{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:700;transition:all .35s ease;border:1.5px solid rgba(255,255,255,.12);color:rgba(255,255,255,.25)}
+.sr.active .ss{background:rgba(0,212,232,.2);border-color:#00D4E8;color:#00D4E8;box-shadow:0 0 14px rgba(0,212,232,.5)}
+.sr.active-warn .ss{background:rgba(239,68,68,.2);border-color:#ef4444;color:#ef4444;box-shadow:0 0 14px rgba(239,68,68,.5)}
+
+.si{font-size:26px;line-height:1;flex-shrink:0;width:32px;text-align:center;transition:filter .35s ease}
+.sr.active .si{filter:drop-shadow(0 0 6px rgba(0,212,232,.6))}
+.sr.active-warn .si{filter:drop-shadow(0 0 6px rgba(239,68,68,.6))}
+
+.sc{display:flex;flex-direction:column;gap:2px;flex:1}
+.sm{font-size:17px;font-weight:700;color:rgba(255,255,255,.4);letter-spacing:-.01em;line-height:1.2;transition:color .35s ease}
+.sr.active .sm{color:#fff}
+.sr.active-warn .sm{color:#ff8080}
+.sm.cy{color:rgba(0,212,232,.35)}
+.sr.active .sm.cy{color:#00D4E8}
+.sd{font-size:12px;font-weight:300;color:rgba(255,255,255,.18);line-height:1.3;transition:color .35s ease}
+.sr.active .sd,.sr.active-warn .sd{color:rgba(255,255,255,.5)}
+
+/* ── BOTTOM WARNING ── */
+.warn{position:relative;z-index:10;display:flex;align-items:center;gap:18px;padding:15px 30px;border-radius:12px;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.3);width:100%;flex-shrink:0}
+.wi{font-size:28px;flex-shrink:0;animation:wp 2s ease-in-out infinite}
+@keyframes wp{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+.wb{display:flex;flex-direction:column;gap:2px}
+.wtg{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(239,68,68,.8)}
+.wtt{font-size:17px;font-weight:700;color:#fff}
+.wd{font-size:12px;font-weight:300;color:rgba(255,255,255,.38)}
+.wd strong{color:#ff6b6b;font-weight:600}
 </style>
 </head>
 <body>
-<div class="page">
-  <img class="bg-photo" src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1920&q=90" alt=""/>
-  <div class="overlay"></div>
-  <div class="top-line"></div>
-  <div class="corner tl"></div><div class="corner tr"></div>
-  <div class="corner bl"></div><div class="corner br"></div>
-  <canvas id="particles"></canvas>
-  <div class="layout">
-    <div class="illustration">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NjAiIGhlaWdodD0iNDU4Ljg4NyIgdmlld0JveD0iMCAwIDk2MCA0NTguODg3IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgcm9sZT0iaW1nIiBhcnRpc3Q9IkthdGVyaW5hIExpbXBpdHNvdW5pIiBzb3VyY2U9Imh0dHBzOi8vdW5kcmF3LmNvLyI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQ4MC4wMDEgLTMyMikiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU2OC41MDcgNDMxLjM0MSkiPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDkuOTk1IDU1Ljc4MSkiPjxwYXRoIGQ9Ik0yNzguNTMsMjkxLjcyN2M4LjQyNy0xLjA5MiwxNC42OTQtNi4zMjUsMTQtMTEuNjg3cy04LjA5LTguODI0LTE2LjUyLTcuNzMxYTIxLjI2NCwyMS4yNjQsMCwwLDAtOS40MjIsMy40NzhsLTM1LjY0Niw1LjA3NiwyLjczOSwxNi42NzcsMzQuODUtNi43NzVhMjEuMjY3LDIxLjI2NywwLDAsMCwxMCwuOTYzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE2OS40ODEgLTIwMi4wNzEpIiBmaWxsPSIjZWQ5ZGEwIi8+PHBhdGggZD0iTTE2NC4wMjksMjEyLjI1Mmw5Ljc3Nyw3Mi43ODZzMi42ODksMTUuNjUzLDI3LjE3LDEzLjM0OSw1Ni42NTMtMTEuOCw1Ni42NTMtMTEuOGwtMi4wOTQtMTctMjcuMzQzLDIuOTYycy0xMi43NjYtMy4xLTE1LjMtMS4wMDgtMS4zNjgsNC41MzMtMy44NzYsMS40OTItMS4yNDgtNC45MjktMy40NDItMi4yNy0yLjY0LDcuMjgyLTMuOTUxLDEuNTU3LTMuNzU5LTQuNTU5LTMuNzU5LTQuNTU5bC0xLjM5Mi01My4zMjFzLTcuMzQ1LTI1LjQzMy0yMC43NjEtMTYuOTMtMTEuNjg0LDE0LjczNi0xMS42ODQsMTQuNzM2WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE2My45NTYgLTE5NS43NzYpIiBmaWxsPSIjMDUwQTBEIi8+PC9nPjxwYXRoIGQ9Ik01LjM3Myw1OC4xODQsNy4wMTIsMzguMzc2YTIyLjE4NCwyMi4xODQsMCwxLDEsMjMuNzQ5LDQuMjgzTDM0LjYxNiw1OS40WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOS45OTYgNS43MzUpIiBmaWxsPSIjZWQ5ZGEwIi8+PHBhdGggZD0iTTIxNS45ODIsMzY2LjM3M2wtNC40NzEsMzMuODE2LTIuMjkzLDE3LjM2LTMuODg4LDI5LjM2Ni0zLjkzNywyOS43NTljLTQuNjYxLS43NDktOS44NzQsNC40NDgtMTQuNDE4LDMuNjQ0LTcuODA4LTEuMzgtMTMuMzg2LTIuMTEyLTIwLjg2NS0zLjY0NFY0MzIuMjE0bC41NjctMTQuNjY1LjY3NC0xNy4zNi4zOTUtMTAuMjc5TDE2MS42LDM2My44NDJzLTEyLjY4My0yNi4yNS02LjgtMzQuNzQ3YTQuOCw0LjgsMCwwLDEsMS4wOTMtMS4wODcsMTIuMzEsMTIuMzEsMCwwLDEsNS43LTIuNjVjNy4zMjMtMS42NjMsMTkuNTI4LTIuMzMsMjkuNDE1LTIuNDg1LDEyLjY5LS4yLDIzLjc4NS4zMzgsMjMuNzg1LjMzOGwuMDY2LDIuMTQ3LjEyMyw0LjY2MVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xNTMuMDc4IC0xNDkuODI2KSIgZmlsbD0iIzA1MEEwRCIvPjxwYXRoIGQ9Ik0yMDIuNjYzLDIwMy44NWwtMjkuNjA3LTguMzY3cy0xMy43OTMsOS43OS0xNS43NjMsMzQuNTgxLDcuODgyLDY0LjU4Miw3Ljg4Miw2NC41ODJMMTU3LjI5NCwzMTkuNnM2My41Ny0xLjc1NCw2Mi4yNTktNC42Ny00LjA4NS0xOS4xNTItMi4xMTQtMjQuNTc2LTEuNjgtMzIuMjc2LTEuNjgtMzIuMjc2LDcuMjExLTE1Ljk2OS0xLjMyNy0yNC41MDdaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTU3LjAzMyAtMTM5Ljk2OSkiIGZpbGw9IiMwNTBBMEQiLz48cGF0aCBkPSJNMTkzLjQ3OCwzOTUuMTc0YzIuMTIzLDguMjI4LDguMDg5LDEzLjgsMTMuMzIzLDEyLjQ1czcuNzU4LTkuMTE4LDUuNjMzLTE3LjM0N2EyMS4yNjQsMjEuMjY0LDAsMCwwLTQuNjE0LTguOTIybC05LjQzNi0zNC43NDgtMTYuMjExLDQuNzc2TDE5My4yLDM4NS4xMzFhMjEuMjY2LDIxLjI2NiwwLDAsMCwuMjgsMTAuMDQyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE1NS40NjQgLTE1Mi40MzIpIiBmaWxsPSIjZWQ5ZGEwIi8+PHBhdGggZD0iTTE5NS43MjIsMjM0LjkyOHMtOS4xODItMjQuODE0LTE5LjI0Ny0yMy4yLTE5LjIzOSwxNy4yMTQtMTkuMjM5LDE3LjIxNGw3LjI3Nyw4OC4yNzZMMTg0LjUsMzY3LjU5MWwyMS4yLTguMzU5LTExLjAxMi01MC4zNDNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTUzLjQwOCAtMTQxLjMwMSkiIGZpbGw9IiMwNTBBMEQiLz48cGF0aCBkPSJNMTEuNDIsNzUuMjczcy4zMTEsOC4xLDEwLjA1NCw5LjI2NmwxOS43NjQsMi4zN3MtMTIuOTYyLTQyLjMxOC02LjUtMzcuMDg2UzYxLjM1MSwzNy41MTEsNjEuMzUxLDM3LjUxMWw0LjQ3NSwxMC42NjdzMTMuMzgyLTMuNDg1LjEtMTYuM2MwLDAtMTUuODg5LTE0LjgyNi0zNC44LTguNTY3cy0xOS43MDYsNTEuOTYtMTkuNzA2LDUxLjk2WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTExLjQxOSAtMjEuNzcxKSIgZmlsbD0iIzA1MEEwRCIvPjwvZz48cGF0aCBkPSJNMTMwNi41NjksNzA1LjM1M0g0NjIuMjkxYy0zMS45MzUuMDE4LTU3LjgxMywxMi40NjgtNTcuODUxLDI3LjgzMmExNi4wMzEsMTYuMDMxLDAsMCwwLDQuMTc0LDEwLjM1M2M4Ljc4NywxMC41NTcsMzAuMDM5LDE3LjQ4MSw1My42NzcsMTcuNDg3aDg0NC4yNzhjMjAuNTUsMCwzOS41NTQtNS4yNSw0OS45MjctMTMuNzg1YTI3LjI1NiwyNy4yNTYsMCwwLDAsMy43NzEtMy43LDE2LjAzMywxNi4wMzMsMCwwLDAsNC4xNzQtMTAuMzUzYy0uMDQ2LTE1LjM2NS0yNS45MzEtMjcuODE0LTU3Ljg2OS0yNy44MzJaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg3NS41NjEgMTkuODYxKSIgZmlsbD0iIzFhM2E0YSIvPjxwYXRoIGQ9Ik0zNC4xMywxNzcuODczVjEyMC40MzRBNjMuOSw2My45LDAsMCwxLDYzLjg4NCwwYzI3LjIzOSwwLDU5LjgsNDEuMzU1LDU5LjgsNDEuMzU1czQuMDg5LDE0LjQ4Nyw0LjA4OSwyMi41MzNBNjMuODc5LDYzLjg3OSwwLDAsMSw5My4zLDEyMC42MTR2NTcuMjU5WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTk1LjM5OSAzNDguNzg5KSIgZmlsbD0iI2VkOWRhMCIvPjxwYXRoIGQ9Ik00NjEuMjkyLDcxMi45OTNIODE0LjY2NmMtMi4zNjUtMjEuNjUtMy45MDUtMTA0LjQwOS0zLjkwNS0xMDkuODU1LDAtMjQuMDI0LTI0LjQ3NC01MC4yNC0yNC40NzQtNTAuMjRsLTguNzYtMy44ODktNzMuMTYxLTE4LjMzMS0xOC45MzMtMTkuNzU0Yy00LjAxOS00LjIwNS0xMC4yNjEtNi42NTMtMTYuODYyLTYuNjEzbC01OS44MDguMzYxYTI0LjE2NSwyNC4xNjUsMCwwLDAtMTQuMTg3LDQuNTE1TDU1Ny41MzksNTM2Ljc4bC01NC4zMTcsMjAuODMxLS4wOTItLjA3NC0uNTYzLjMzOS04LjA2Miw0LjY2My01LjE3OSwzLjAwOXMtMTMuNjEzLDEzLjEwOS0yNC40ODUsNTIuNDIzQzQ2My4yMDUsNjIzLjg4Nyw0NjIuMDU4LDcwMC40MzUsNDYxLjI5Miw3MTIuOTkzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDI0LjI1OSAxMi4yMjEpIiBmaWxsPSIjMGExZTJhIi8+PHBhdGggZD0iTTUyMS4xNzYsNjg5LjA1NUgzNDYuM2wzLjctMTcuNTc5SDUxNy40NzFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MjUuMTY2IDY5LjY5KSIgZmlsbD0iIzA1MEEwRCIvPjxwYXRoIGQ9Ik03ODUuNyw0ODUuOTMxSDQ4OS4wNTZhOS42MjQsOS42MjQsMCwwLDAtOS42MTUsOS42MTVWNjk1LjcxOWE5LjYyNCw5LjYyNCwwLDAsMCw5LjYxNSw5LjYxNEg3ODUuN2E5LjYyNCw5LjYyNCwwLDAsMCw5LjYxNS05LjYxNVY0OTUuNTQ2QTkuNjI0LDkuNjI0LDAsMCwwLDc4NS43LDQ4NS45MzFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MTkuMTI2IC01LjM5NykiIGZpbGw9IiMwZDJhMzYiLz48cGF0aCBkPSJNNjYxLjAzNyw2MzUuOTc4SDU5My42NTJhMy42LDMuNiwwLDAsMC0zLjU5LDMuNnYxMDYuNDVoNzQuNTc2VjYzOS41NzZhMy42LDMuNiwwLDAsMC0zLjYtMy42Wm0tMzMuNDY2LDYwLjQ4M2E3Ljk5NCw3Ljk5NCwwLDAsMS03Ljk1OC03Ljk1OFY2NzYuMjNhNy45NTcsNy45NTcsMCwxLDEsMTUuOTE1LDBWNjg4LjVhNy45OTQsNy45OTQsMCwwLDEtNy45NTgsNy45NThaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MjkuMTUgNy4wMTkpIiBmaWxsPSIjMDUwQTBEIi8+PHBhdGggZD0iTTU4OS44MzksNzM4LjcxN3YxMC4yN0EyLjAxMiwyLjAxMiwwLDAsMCw1OTEuODQ3LDc1MWg3MS4wMjdhMi4wMTgsMi4wMTgsMCwwLDAsMi4wMDgtMi4wMDh2LTEwLjI3WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDI5LjE0MyAxMC45MjQpIiBmaWxsPSIjMGQyYTM2Ii8+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMC45OTMsIC0wLjEyMiwgMC4xMjIsIDAuOTkzLCA2NzUuMDA1LCA0MzEuNTI4KSI+PHJlY3Qgd2lkdGg9IjE4MC4zNzMiIGhlaWdodD0iMTQyLjI0NSIgcng9IjE2IiBmaWxsPSIjMDBENEU4Ii8+PHBhdGggZD0iTTU3LjUzNSw2LjEyNEgzLjA2MkEzLjA2MiwzLjA2MiwwLDAsMSwzLjA2MiwwSDU3LjUzNWEzLjA2MiwzLjA2MiwwLDAsMSwwLDYuMTI0WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjYuMDQzIDk2LjU3MikiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNNTcuNTM1LDYuMTI0SDMuMDYyQTMuMDYyLDMuMDYyLDAsMCwxLDMuMDYyLDBINTcuNTM1YTMuMDYyLDMuMDYyLDAsMCwxLDAsNi4xMjRaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNi4wNDMgODQuODA3KSIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0xOC41MzYsNi4xMjRIMy4wNjJBMy4wNjIsMy4wNjIsMCwwLDEsMy4wNjIsMEgxOC41MzZhMy4wNjIsMy4wNjIsMCwwLDEsMCw2LjEyNFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI2LjA0MyAxMDguMTc1KSIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0xNy40OTIsMzQuNTFhMy4wODcsMy4wODcsMCwwLDEtMi4xNzUtLjg5TC44OTQsMTkuMzc3YTMuMDA2LDMuMDA2LDAsMCwxLDAtNC4yNzdMMTUuMjU3LjkxNGEzLjE4NiwzLjE4NiwwLDAsMSw0LjQ4MS4wMTRoMGEzLjE4MywzLjE4MywwLDAsMSwwLDQuNUw5LjA2NiwxNi4xYTEuNzc4LDEuNzc4LDAsMCwwLDAsMi41MTJMMTkuNjgyLDI5LjIyN0EzLjA5NCwzLjA5NCwwLDAsMSwxNy40OSwzNC41MVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY0Ljc0OSAyNy45NDYpIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTU3LjUzNSw2LjEyNEgzLjA2MkEzLjA2MiwzLjA2MiwwLDAsMSwzLjA2MiwwSDU3LjUzNWEzLjA2MiwzLjA2MiwwLDAsMSwwLDYuMTI0WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTMuNzMxIDk2LjU3MikiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNOTcuODIyLDYuMTI0SDMuMDYyQTMuMDYyLDMuMDYyLDAsMCwxLDMuMDYyLDBoOTQuNzZhMy4wNjIsMy4wNjIsMCwxLDEsMCw2LjEyNFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUzLjQ0MyAxMDguMTc1KSIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0xOC41MzYsNi4xMjRIMy4wNjJBMy4wNjIsMy4wNjIsMCwwLDEsMy4wNjIsMEgxOC41MzZhMy4wNjIsMy4wNjIsMCwwLDEsMCw2LjEyNFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDk1LjAxOSA4NC45NjgpIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTMuMTgsMzQuNTA3QTMuMDk0LDMuMDk0LDAsMCwxLC45ODgsMjkuMjI0TDExLjYsMTguNjA4YTEuNzc4LDEuNzc4LDAsMCwwLDAtMi41MTJMLjkzLDUuNDIyQTMuMTc5LDMuMTc5LDAsMCwxLC45My45MjhoMEEzLjE4NiwzLjE4NiwwLDAsMSw1LjQxMS45MTRMMTkuNzc1LDE1LjFhMy4wMDYsMy4wMDYsMCwwLDEsMCw0LjI3N0w1LjM1NCwzMy42MThhMy4wODcsMy4wODcsMCwwLDEtMi4xNzMuODlaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIuMDQzIDI3Ljk0OCkiIGZpbGw9IiNmZmYiLz48L2c+PHBhdGggZD0iTS0xMzM1NC40NDEsNzA0Mi4zNjlxLS40NzUtMS43Ny0xLjExMy0zLjQ4Yy0xLjg5MS01LjA0OC00LjMtNy40NDQtOS4zNDQtOS4zMzgtMS4xNTgtLjQyMi0yLjMzOC0uOC0zLjUyNS0xLjEzNWEuNjU2LjY1NiwwLDAsMS0uMTE5LS4wMzdsLS4xLS4wMzgtLjA5NC0uMDQ0YS40MjkuNDI5LDAsMCwxLS4xLS4wNTNsLS4wODQtLjA0NGEuOTY0Ljk2NCwwLDAsMS0uMS0uMDY3bC0uMDc2LS4wNTEtLjEtLjA3NC0uMDc2LS4wNjctLjA4Mi0uMDc1LS4wNzQtLjA4LS4wNjYtLjA3NS0uMDcyLS4wOTUtLjA1MS0uMDc1YS43OTIuNzkyLDAsMCwxLS4wNjgtLjFsLS4wNDUtLjA4MmEuNDMzLjQzMywwLDAsMS0uMDUxLS4xbC0uMDQ1LS4xLS4wMzktLjFjLS4wMTItLjAzNy0uMDI3LS4wNzMtLjA0My0uMTE5bC0uMDIzLS4wODlhLjc2OS43NjksMCwwLDEtLjAyOS0uMTI2bC0uMDE0LS4wOS0uMDE2LS4xMjYtLjAwOC0uMXYtLjIyM2EuNC40LDAsMCwxLC4wMDgtLjA5NS41NzEuNTcxLDAsMCwxLC4wMTYtLjEyN2wuMDE0LS4wODljLjAwOC0uMDUxLjAyMy0uMTExLjAzNy0uMTYzbC4wMTYtLjA1M2ExLjE3OCwxLjE3OCwwLDAsMCwuMDM1LS4xMTlsLjA0Ny0uMDk1LjAzNy0uMWEuNjU3LjY1NywwLDAsMSwuMDU5LS4xbC4wMzctLjA4Mi4wNjYtLjEuMDYxLS4wNjcuMDcyLS4xLjA2My0uMDY3LjA3OC0uMDgyLjA4Mi0uMDgyLjA3Ni0uMDY1LjEtLjA2Ny4wNjYtLjA1MmMuMDM3LS4wMjMuMDc2LS4wNTMuMTA1LS4wNjdsLjA4LS4wNDRhLjc5MS43OTEsMCwwLDEsLjExMy0uMDZsLjA4OC0uMDQ0LjEtLjAzOGEuNzEuNzEsMCwwLDEsLjExOS0uMDM2bC4wNTEtLjAxN2MxLjE3Mi0uMzI1LDIuMzIyLS43LDMuNDY3LTEuMTEyLDUuMDYxLTEuOSw3LjQ2Ny00LjI5MSw5LjM1NC05LjMzMS40Mi0xLjE0My44LTIuMzA5LDEuMTE3LTMuNDg3YTIuMjEyLDIuMjEyLDAsMCwxLDQuMjcsMHEuNDg5LDEuNzY4LDEuMTEzLDMuNDhjMS44OTUsNS4wNDEsNC4zLDcuNDM4LDkuMzYxLDkuMzI5LDEuMDQ1LjQsMi4yMDUuNzY2LDMuNDczLDEuMTIxYTIuMjExLDIuMjExLDAsMCwxLS4wMDgsNC4yNjJjLTEuMTcyLjMyNi0yLjMzLjctMy40NjUsMS4xMi01LjA2MiwxLjg5NC03LjQ2Nyw0LjI5LTkuMzU1LDkuMzIzcS0uNjMzLDEuNzI3LTEuMTE5LDMuNWEyLjE2LDIuMTYsMCwwLDEtMi4xMzMsMS42MzJBMi4xNzIsMi4xNzIsMCwwLDEtMTMzNTQuNDQxLDcwNDIuMzY5Wm0xOS4yNDgtMjUuODY2YTE2Ljg0OSwxNi44NDksMCwwLDAtMS4wNzYtMi45OTIsNi4zMiw2LjMyLDAsMCwwLTMuMjIxLTMuMjM2LDE3LjczMiwxNy43MzIsMCwwLDAtMy4wNDUtMS4wOTFsLS4xMjUtLjA0NC0uMS0uMDM4LS4xLS4wNDQtLjExMy0uMDYtLjA3Mi0uMDQ0YTEuMDc3LDEuMDc3LDAsMCwxLS4xMTMtLjA2MWwtLjA2Ni0uMDUxLS4xLS4wNzUtLjA3Ni0uMDY3LS4wOC0uMDczLS4wNzYtLjA4Mi0uMDU5LS4wNjctLjA3Mi0uMS0uMDU1LS4wNzVhLjk4MS45ODEsMCwwLDEtLjA3Mi0uMWwtLjA0NS0uMDgyLS4wNTEtLjExMS0uMDQ1LS4xLS4wMzctLjFhLjUzNC41MzQsMCwwLDEtLjA0NS0uMTMybC0uMDIzLS4wNzRhMS4wODMsMS4wODMsMCwwLDEtLjA0My0uMjE2bC0uMDE2LS4xNDItLjAwNi0uMDgxdi0uMTExYS41MzkuNTM5LDAsMCwxLC4wMDYtLjE4Ni45MzcuOTM3LDAsMCwxLC4wMjMtLjIwOCwxLjIxMSwxLjIxMSwwLDAsMSwuMDU5LS4yMjMuMzUuMzUsMCwwLDEsLjA0NS0uMTM0bC4wMzctLjEuMDQ1LS4xLjA1MS0uMS4wNDUtLjA4MmEuOTUxLjk1MSwwLDAsMSwuMDY4LS4xbC4wNTEtLjA3NS4wNzQtLjEuMDYxLS4wNzQuMDgtLjA3NC4wNzQtLjA4MWEuOC44LDAsMCwwLC4wNzItLjA1OWwuMS0uMDc0LjA2Ni0uMDUzYS44NDQuODQ0LDAsMCwxLC4xMTMtLjA2N2wuMDcyLS4wNDQuMTExLS4wNTkuMTA3LS4wNDYuMDg4LS4wMzYuMTM1LS4wNDUuMDU5LS4wMTZhMTcuOTM1LDE3LjkzNSwwLDAsMCwyLjk2MS0xLjA2MSw2LjMzNCw2LjMzNCwwLDAsMCwzLjI1LTMuMjQzLDE3LjUzOCwxNy41MzgsMCwwLDAsMS4wNjgtMywyLjIxNSwyLjIxNSwwLDAsMSw0LjI2OCwwLDE3LjYzMiwxNy42MzIsMCwwLDAsMS4wNzgsMyw2LjI4NSw2LjI4NSwwLDAsMCwzLjI1LDMuMjQzLDE4LDE4LDAsMCwwLDIuOTg0LDEuMDY4LDIuMjEyLDIuMjEyLDAsMCwxLS4wMiw0LjI2OSwxOC41NjYsMTguNTY2LDAsMCwwLTIuOTczLDEuMDY4LDYuMzA1LDYuMzA1LDAsMCwwLTMuMjM0LDMuMjE1LDE3LjM1MiwxNy4zNTIsMCwwLDAtMS4wNzYsMi45OTEsMi4xNzQsMi4xNzQsMCwwLDEtMi4xNDUsMS42NTFBMi4xNTksMi4xNTksMCwwLDEtMTMzMzUuMTkzLDcwMTYuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEzODgyIC02NjA0KSIgZmlsbD0iIzFhM2E0YSIvPjxwYXRoIGQ9Ik05Ni44NDEsMTExLjYzNWMtNi44NDUsMi42ODMtMTMuOTg1LTMuMjM1LTE4LjEyNy05LjNzLTcuOTcxLTEzLjM5LTE1LjAyMS0xNS40NzNjLTkuNjM1LTIuODQzLTE4LjksNS43NzctMjguOTE3LDYuNTQ0LTExLjMxLjg2Mi0yMS4yMzItOC44Ny0yNC41MjMtMTkuNzIzUzguNyw1MS4xNzIsMTAuNDYzLDM5Ljk3TDE1LjEsNTIuMTg2QTI1Ljc0LDI1Ljc0LDAsMCwxLDIwLjU3LDI3LjYzOUwyMy4yNDUsNDYuNmEyMC4yMTYsMjAuMjE2LDAsMCwxLDE4LjUyLTIxLjg1bDIuNDQxLDExLjA4QTE4Ny41LDE4Ny41LDAsMCwxLDgxLjQ5MSwyNC41NzdjMTIuODUzLTIsMjYuNS0xLjE4LDM4LjA5Myw0LjcyNSwxNy4zMzIsOC44NDMsMjcuNjIxLDI3LjkyMiwzMC41NjYsNDcuMTY1cy0uNDIsMzguODI1LTQuMjQ3LDU3LjkxYy0uOTY3LDQuOC0xMS4wNzEsMjAuNTY5LTE1LjY0NywyMi4yODktNC4zODgsMS4xNTktNS43NTYtMTMuNTI3LTUuNzU2LTEzLjUyN3MtLjA1Ni05LjczNSwwLTE0LjE1Yy0uMzgzLTYuNjI2LS41LTEzLjQ4LTMuMi0xOS41NTRzLTguODM3LTExLjItMTUuNDMtMTAuMzg0LTExLjMyLDkuNzY3LTkuMDM0LDEyLjU4NCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTc5LjQ1MyAyOTguNDAzKSIgZmlsbD0iIzA1MEEwRCIvPjwvZz48L3N2Zz4=" alt="IT Support Illustration"/>
+<div class="p">
+<img class="bg" src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1920&q=90" alt=""/>
+<div class="ov"></div>
+<div class="tl"></div>
+<div class="co a"></div><div class="co b"></div><div class="co c"></div><div class="co d"></div>
+<canvas id="cv"></canvas>
+
+<!-- TOP -->
+<div class="top">
+  <div class="ey"><div class="el"></div><span class="et">Migration Night &nbsp;·&nbsp; April 6–9 &nbsp;·&nbsp; Action Required</span><div class="el"></div></div>
+  <h1>Tonight at <span>7 PM</span> — Do This.</h1>
+  <p class="sb">Follow these steps in order before you leave tonight. Your device migrates while you sleep.</p>
+</div>
+
+<!-- MIDDLE -->
+<div class="mid">
+
+  <!-- PREMIUM CLOCK + STEP INDICATOR -->
+  <div class="clock-col">
+    <div class="clock-outer">
+      <svg viewBox="0 0 240 240" width="240" height="240" xmlns="http://www.w3.org/2000/svg">
+        <!-- outer decorative ring -->
+        <circle cx="120" cy="120" r="114" fill="none" stroke="rgba(239,68,68,.06)" stroke-width="1"/>
+        <!-- tick marks all 12 -->
+        <g stroke="rgba(239,68,68,.35)" stroke-linecap="round">
+          <line x1="120" y1="10" x2="120" y2="22" stroke-width="3"/>
+          <line x1="120" y1="218" x2="120" y2="230" stroke-width="3"/>
+          <line x1="10" y1="120" x2="22" y2="120" stroke-width="3"/>
+          <line x1="218" y1="120" x2="230" y2="120" stroke-width="3"/>
+          <line x1="50" y1="29" x2="56" y2="39" stroke-width="1.5"/>
+          <line x1="190" y1="29" x2="184" y2="39" stroke-width="1.5"/>
+          <line x1="29" y1="50" x2="39" y2="56" stroke-width="1.5"/>
+          <line x1="211" y1="50" x2="201" y2="56" stroke-width="1.5"/>
+          <line x1="29" y1="190" x2="39" y2="184" stroke-width="1.5"/>
+          <line x1="211" y1="190" x2="201" y2="184" stroke-width="1.5"/>
+          <line x1="50" y1="211" x2="56" y2="201" stroke-width="1.5"/>
+          <line x1="190" y1="211" x2="184" y2="201" stroke-width="1.5"/>
+        </g>
+        <!-- progress ring bg -->
+        <circle cx="120" cy="120" r="104" fill="rgba(239,68,68,.03)" stroke="rgba(239,68,68,.08)" stroke-width="1.5"/>
+        <!-- spinning progress arc -->
+        <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(239,68,68,.75)" stroke-width="4" stroke-dasharray="654" stroke-dashoffset="220" stroke-linecap="round" transform="rotate(-90 120 120)" id="progressArc">
+          <animate attributeName="stroke-dashoffset" values="654;0;654" dur="14s" repeatCount="indefinite"/>
+        </circle>
+        <!-- inner glow ring -->
+        <circle cx="120" cy="120" r="88" fill="rgba(239,68,68,.03)" stroke="rgba(239,68,68,.1)" stroke-width="1"/>
+        <!-- center dot -->
+        <circle cx="120" cy="120" r="4" fill="rgba(239,68,68,.6)">
+          <animate attributeName="opacity" values="1;.3;1" dur="1s" repeatCount="indefinite"/>
+        </circle>
+        <!-- clock hands -->
+        <line x1="120" y1="120" x2="120" y2="52" stroke="rgba(239,68,68,.9)" stroke-width="3" stroke-linecap="round" transform="rotate(0 120 120)" id="hourHand"/>
+        <line x1="120" y1="120" x2="120" y2="42" stroke="#fff" stroke-width="2" stroke-linecap="round" transform="rotate(210 120 120)" id="minuteHand"/>
+        <circle cx="120" cy="120" r="5" fill="#ef4444"/>
+      </svg>
+      <div class="clock-face">
+        <div class="clock-time" id="clockTime">7:00</div>
+        <div class="clock-ampm">PM</div>
+        <div class="clock-label">Tonight</div>
+      </div>
     </div>
-    <div class="right">
-      <div class="eyebrow">
-        <div class="eyebrow-line"></div>
-        <span class="eyebrow-text">Migration Support &nbsp;·&nbsp; We've Got You Covered</span>
-      </div>
-      <h1 class="headline">Need<br><span class="accent">Help?</span></h1>
-      <div class="info-blocks">
-        <div class="info-block">
-          <div class="block-icon">📍</div>
-          <div class="block-text">
-            <div class="block-label">Find Us Here</div>
-            <div class="block-value">Main Breaker Conference Room</div>
-            <div class="block-sub">7200 Standard Drive, Hanover, MD 21076</div>
-          </div>
-        </div>
-        <div class="info-block">
-          <div class="block-icon">📅</div>
-          <div class="block-text">
-            <div class="block-label">Support Available</div>
-            <div class="block-value">April 7 – 10</div>
-            <div class="block-sub">Morning after each migration night</div>
-          </div>
-        </div>
-        <div class="info-block">
-          <div class="block-icon">🕖</div>
-          <div class="block-text">
-            <div class="block-label">Hours Each Day</div>
-            <div class="block-value">7:00 AM – 2:00 PM</div>
-            <div class="block-sub">Walk in</div>
-          </div>
-        </div>
-      </div>
+    <div class="clock-info">
+      <div class="clock-sub">Migration Starts</div>
+    </div>
+    <div class="step-ind">
+      <div class="step-ind-num" id="stepNum">01</div>
+      <div class="step-ind-label">Active Step</div>
+      <div class="step-ind-text" id="stepText">Check email by noon</div>
+    </div>
+  </div>
+
+  <!-- TERMINAL -->
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="td"></div><div class="td"></div><div class="td"></div>
+      <span class="tt">migration-checklist.sh — execute before 7:00 PM</span>
+    </div>
+    <div class="term-body">
+      <div class="sr" id="s0"><div class="ss" id="st0">01</div><div class="si">📧</div><div class="sc"><div class="sm">Check email by noon</div><div class="sd">Your new Forgent account + password arrives today via email — save it</div></div></div>
+      <div class="sr" id="s1"><div class="ss" id="st1">02</div><div class="si">🔄</div><div class="sc"><div class="sm">Close all apps → Reboot → Log back in</div><div class="sd">Close everything, reboot your computer and re-login before 7 PM</div></div></div>
+      <div class="sr" id="s2"><div class="ss" id="st2">03</div><div class="si">📶</div><div class="sc"><div class="sm cy">Connect to office Wi-Fi</div><div class="sd">Ensure your laptop is connected to the office network — stay connected all night</div></div></div>
+      <div class="sr" id="s3"><div class="ss" id="st3">04</div><div class="si">🔒</div><div class="sc"><div class="sm">Lock screen only — do NOT log out</div><div class="sd">Lock your screen. Do not sign out or shut down. Disable sleep mode</div></div></div>
+      <div class="sr" id="s4"><div class="ss" id="st4">05</div><div class="si">🔌</div><div class="sc"><div class="sm cy">Stay plugged into power — lid open</div><div class="sd">Laptop must stay plugged in with lid OPEN all night</div></div></div>
+      <div class="sr" id="s5"><div class="ss" id="st5">06</div><div class="si">💻</div><div class="sc"><div class="sm cy">Leave laptop ON all night</div><div class="sd">Device will reboot several times — this is normal, do not intervene</div></div></div>
+      <div class="sr" id="s6"><div class="ss" id="st6">07</div><div class="si">⛔</div><div class="sc"><div class="sm">Do NOT log in overnight — wait until morning</div><div class="sd">Device reboots multiple times during migration — log in next morning only</div></div></div>
     </div>
   </div>
 </div>
+
+<!-- WARNING -->
+<div class="warn">
+  <div class="wi">⚠️</div>
+  <div class="wb">
+    <div class="wtg">Do Not Attempt Login Overnight</div>
+    <div class="wtt">Your device will reboot multiple times — wait until morning to log in</div>
+    <div class="wd">IT Support: <strong>April 7–10 · Main Breaker Conference Room · 7 AM–2 PM</strong></div>
+  </div>
+</div>
+
+</div>
 <script>
-const cv = document.getElementById('particles');
-const cx = cv.getContext('2d');
-cv.width = 1920; cv.height = 1080;
-const pts = Array.from({length:45},()=>({ x:Math.random()*1920, y:Math.random()*1080, r:Math.random()*1.3+.3, vx:(Math.random()-.5)*.22, vy:(Math.random()-.5)*.22, a:Math.random()*.28+.04 }));
-(function draw(){ cx.clearRect(0,0,1920,1080); pts.forEach(p=>{ cx.beginPath(); cx.arc(p.x,p.y,p.r,0,Math.PI*2); cx.fillStyle=`rgba(0,212,232,${p.a})`; cx.fill(); p.x+=p.vx; p.y+=p.vy; if(p.x<0)p.x=1920; if(p.x>1920)p.x=0; if(p.y<0)p.y=1080; if(p.y>1080)p.y=0; }); requestAnimationFrame(draw); })();
+/* ── PARTICLES ── */
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+cv.width=1920;cv.height=1080;
+const pts=Array.from({length:40},()=>({x:Math.random()*1920,y:Math.random()*1080,r:Math.random()*1.2+.3,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,a:Math.random()*.2+.04}));
+(function drawBg(){cx.clearRect(0,0,1920,1080);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=`rgba(0,212,232,${p.a})`;cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=1920;if(p.x>1920)p.x=0;if(p.y<0)p.y=1080;if(p.y>1080)p.y=0;});requestAnimationFrame(drawBg);})();
+
+/* ── STEP HIGHLIGHT + CLOCK PULSE ── */
+const stepTitles=[
+  'Check email by noon',
+  'Close all apps → Reboot',
+  'Connect to office Wi-Fi',
+  'Lock screen — do NOT log out',
+  'Stay plugged in — lid open',
+  'Leave laptop ON all night',
+  'Do NOT log in overnight'
+];
+const TOTAL=7;
+let cur=0;
+const clockEl=document.getElementById('clockTime');
+const stepNumEl=document.getElementById('stepNum');
+const stepTextEl=document.getElementById('stepText');
+
+function highlight(idx){
+  for(let i=0;i<TOTAL;i++){
+    document.getElementById('s'+i).classList.remove('active','active-warn');
+  }
+  const row=document.getElementById('s'+idx);
+  const isWarn = idx===6;
+  row.classList.add(isWarn?'active-warn':'active');
+
+  // Update step indicator
+  stepNumEl.textContent=String(idx+1).padStart(2,'0');
+  stepNumEl.style.color=isWarn?'#ef4444':'#00D4E8';
+  stepTextEl.textContent=stepTitles[idx];
+
+  // Clock pulse
+  const color=isWarn?'rgba(239,68,68,1)':'rgba(0,212,232,.9)';
+  clockEl.style.textShadow=`0 0 30px ${color},0 0 60px ${color}`;
+  setTimeout(()=>{clockEl.style.textShadow='none';},350);
+}
+
+highlight(cur);
+setInterval(()=>{
+  cur=(cur+1)%TOTAL;
+  highlight(cur);
+},2000);
+
+/* ── CLOCK HANDS ── */
+function animateHands(){
+  const now=new Date();
+  const h=(now.getHours()%12)*30+(now.getMinutes()*.5);
+  const m=now.getMinutes()*6+(now.getSeconds()*.1);
+  document.getElementById('hourHand').setAttribute('transform',`rotate(${h} 120 120)`);
+  document.getElementById('minuteHand').setAttribute('transform',`rotate(${m} 120 120)`);
+  requestAnimationFrame(animateHands);
+}
+animateHands();
 </script>
 </body>
 </html>
