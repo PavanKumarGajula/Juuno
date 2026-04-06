@@ -2,423 +2,228 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Laptop Migration – Slide 1</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<title>Migration – Slide 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;font-family:'Sora',sans-serif;background:#020608}
+.p{width:1920px;height:1080px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(.2) saturate(.5);z-index:0}
+.ov{position:absolute;inset:0;z-index:1;background:
+  radial-gradient(ellipse 80% 70% at 50% 50%,rgba(0,212,232,.04) 0%,transparent 65%),
+  radial-gradient(ellipse 100% 45% at 50% 0%,rgba(0,0,0,.98) 0%,transparent 55%),
+  radial-gradient(ellipse 100% 45% at 50% 100%,rgba(0,0,0,.98) 0%,transparent 55%),
+  linear-gradient(180deg,rgba(2,6,8,.8) 0%,rgba(2,6,8,.1) 25%,rgba(2,6,8,.1) 75%,rgba(2,6,8,.98) 100%)}
+.tl{position:absolute;top:0;left:0;right:0;height:3px;z-index:20;background:linear-gradient(90deg,transparent 5%,#00D4E8 30%,#73F3FF 50%,#00D4E8 70%,transparent 95%);animation:sh 3s ease-in-out infinite}
+@keyframes sh{0%,100%{opacity:.8}50%{opacity:1;filter:brightness(1.5)}}
+.co{position:absolute;width:22px;height:22px;z-index:10}
+.co.a{top:44px;left:60px;border-top:1.5px solid rgba(0,212,232,.4);border-left:1.5px solid rgba(0,212,232,.4)}
+.co.b{top:44px;right:60px;border-top:1.5px solid rgba(0,212,232,.4);border-right:1.5px solid rgba(0,212,232,.4)}
+.co.c{bottom:44px;left:60px;border-bottom:1.5px solid rgba(0,212,232,.4);border-left:1.5px solid rgba(0,212,232,.4)}
+.co.d{bottom:44px;right:60px;border-bottom:1.5px solid rgba(0,212,232,.4);border-right:1.5px solid rgba(0,212,232,.4)}
+canvas{position:absolute;inset:0;z-index:2;pointer-events:none}
 
-  html, body {
-    width: 1920px;
-    height: 1080px;
-    overflow: hidden;
-    font-family: 'Sora', sans-serif;
-    background: #020608;
-  }
+/* ── SERVER SCENE — TOP ── */
+.scene{position:relative;z-index:10;width:1400px;height:260px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;opacity:0;animation:fu .9s .2s ease forwards}
 
-  .page {
-    width: 1920px;
-    height: 1080px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+.server{display:flex;flex-direction:column;align-items:center;gap:8px;width:180px}
+.srv-svg{width:140px;height:auto}
+.server.right .srv-svg{filter:drop-shadow(0 0 24px rgba(0,212,232,.4))}
+.srv-name{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.server.left .srv-name{color:rgba(255,255,255,.35)}
+.server.right .srv-name{color:#00D4E8}
+.srv-sub{font-size:10px;font-weight:300;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase}
+.server.right .srv-sub{color:rgba(0,212,232,.45)}
+.lights{display:flex;gap:5px;margin-top:2px}
+.light{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.1)}
+.server.right .light:nth-child(1){background:#22c55e;box-shadow:0 0 6px #22c55e;animation:lp 1.5s infinite}
+.server.right .light:nth-child(2){background:#00D4E8;box-shadow:0 0 6px #00D4E8;animation:lp 1.5s .3s infinite}
+.server.right .light:nth-child(3){background:#00D4E8;box-shadow:0 0 5px #00D4E8;animation:lp 1.5s .6s infinite}
+@keyframes lp{0%,100%{opacity:1}50%{opacity:.2}}
+.xfer-wrap{position:absolute;left:180px;right:180px;top:0;bottom:40px;z-index:5}
+.xfer-wrap canvas{width:100%;height:100%}
 
-  /* ── LENOVO THINKPAD BACKGROUND ── */
-  .bg-photo {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 40%;
-    filter: brightness(0.18) saturate(0.4);
-    z-index: 0;
-  }
+/* ── EYEBROW ── */
+.ey{display:flex;align-items:center;gap:14px;margin-bottom:10px;position:relative;z-index:10;opacity:0;animation:fu .8s .4s cubic-bezier(.22,1,.36,1) forwards}
+.el{width:36px;height:1px;background:#00D4E8;opacity:.5}
+.et{font-size:13px;font-weight:400;letter-spacing:.26em;text-transform:uppercase;color:rgba(0,212,232,.8)}
 
-  .overlay {
-    position: absolute; inset: 0; z-index: 1;
-    background:
-      radial-gradient(ellipse 80% 70% at 50% 55%, rgba(0,212,232,0.04) 0%, transparent 65%),
-      radial-gradient(ellipse 100% 50% at 50% 0%,   rgba(0,0,0,0.92) 0%, transparent 60%),
-      radial-gradient(ellipse 100% 50% at 50% 100%, rgba(0,0,0,0.98) 0%, transparent 60%),
-      linear-gradient(180deg, rgba(2,6,8,0.5) 0%, rgba(2,6,8,0.05) 30%, rgba(2,6,8,0.05) 70%, rgba(2,6,8,0.92) 100%);
-  }
+/* ── HEADLINE ── */
+h1{font-size:104px;font-weight:900;line-height:.95;letter-spacing:-.04em;color:#fff;text-align:center;margin-bottom:10px;position:relative;z-index:10;opacity:0;animation:fu 1s .55s cubic-bezier(.22,1,.36,1) forwards}
+h1 span{color:#00D4E8}
 
-  /* ── TOP ACCENT LINE ── */
-  .top-line {
-    position: absolute; top: 0; left: 0; right: 0; height: 3px; z-index: 20;
-    background: linear-gradient(90deg, transparent 5%, #00D4E8 30%, #73F3FF 50%, #00D4E8 70%, transparent 95%);
-    animation: shimmer 3s ease-in-out infinite;
-  }
-  @keyframes shimmer { 0%,100%{opacity:.8} 50%{opacity:1;filter:brightness(1.5)} }
+/* ── SUBTEXT ── */
+.sb{font-size:20px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.55);text-align:center;max-width:860px;margin-bottom:22px;position:relative;z-index:10;opacity:0;animation:fu .85s .7s cubic-bezier(.22,1,.36,1) forwards}
+.sb strong{color:rgba(255,255,255,.88);font-weight:700}
 
-  /* Corner marks */
-  .corner { position: absolute; width: 22px; height: 22px; z-index: 10; }
-  .corner.tl { top: 44px; left: 88px; border-top: 1.5px solid rgba(0,212,232,.4); border-left: 1.5px solid rgba(0,212,232,.4); }
-  .corner.tr { top: 44px; right: 88px; border-top: 1.5px solid rgba(0,212,232,.4); border-right: 1.5px solid rgba(0,212,232,.4); }
-  .corner.bl { bottom: 44px; left: 88px; border-bottom: 1.5px solid rgba(0,212,232,.4); border-left: 1.5px solid rgba(0,212,232,.4); }
-  .corner.br { bottom: 44px; right: 88px; border-bottom: 1.5px solid rgba(0,212,232,.4); border-right: 1.5px solid rgba(0,212,232,.4); }
+/* ── DOMAIN ROW ── */
+.dr{display:flex;align-items:center;gap:20px;margin-bottom:16px;position:relative;z-index:10;opacity:0;animation:fu .8s .85s ease forwards}
+.dc{display:flex;flex-direction:column;align-items:center;gap:5px;padding:13px 30px;border-radius:12px}
+.dc.o{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.dc.n{background:rgba(0,212,232,.07);border:1px solid rgba(0,212,232,.35);box-shadow:0 0 30px rgba(0,212,232,.08)}
+.dl{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.dc.o .dl{color:rgba(255,255,255,.28)}
+.dc.n .dl{color:rgba(0,212,232,.65)}
+.dv{font-family:'JetBrains Mono',monospace;font-size:21px;font-weight:700}
+.dc.o .dv{color:rgba(255,255,255,.4)}
+.dc.n .dv{color:#00D4E8}
+.da{font-size:26px;color:rgba(0,212,232,.45);animation:nd 1.8s ease-in-out infinite}
+@keyframes nd{0%,100%{transform:translateX(0);opacity:.45}50%{transform:translateX(8px);opacity:1}}
 
-  /* ── PARTICLES ── */
-  canvas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+/* ── DATE ROW ── */
+.dtr{display:flex;align-items:center;position:relative;z-index:10;opacity:0;animation:fu .8s 1s ease forwards}
+.dt{display:flex;align-items:center;gap:12px;padding:14px 38px;border:1px solid rgba(0,212,232,.2);background:rgba(0,212,232,.05)}
+.dt:first-child{border-radius:12px 0 0 12px;border-right:none}
+.dt:last-child{border-radius:0 12px 12px 0;border-left:1px solid rgba(0,212,232,.1)}
+.dtdiv{width:1px;height:56px;background:rgba(0,212,232,.2)}
+.di{font-size:26px;line-height:1}
+.dx{display:flex;flex-direction:column;gap:2px}
+.dlb{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,212,232,.55)}
+.dval{font-size:21px;font-weight:700;color:#fff;letter-spacing:-.01em}
 
-  /* ── FULL PAGE COLUMN ── */
-  .col {
-    position: relative; z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1740px;
-    gap: 0;
-  }
-
-  /* ── FLYING ICONS STRIP ── */
-  .icon-strip {
-    position: relative;
-    width: 100%;
-    height: 72px;
-    margin-bottom: 52px;
-    overflow: hidden;
-  }
-
-  /* Fade edges of strip */
-  .icon-strip::before, .icon-strip::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 160px;
-    z-index: 5;
-  }
-  .icon-strip::before { left: 0;  background: linear-gradient(90deg, rgba(2,6,8,1), transparent); }
-  .icon-strip::after  { right: 0; background: linear-gradient(-90deg, rgba(2,6,8,1), transparent); }
-
-  /* Dashed track */
-  .strip-track {
-    position: absolute;
-    top: 50%; left: 0; right: 0;
-    height: 1px;
-    transform: translateY(-50%);
-    background: repeating-linear-gradient(90deg,
-      rgba(0,212,232,.2) 0px, rgba(0,212,232,.2) 10px,
-      transparent 10px, transparent 22px
-    );
-  }
-
-  /* Individual flying item */
-  .fly-item {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    opacity: 0;
-    will-change: left, opacity;
-  }
-
-  .fly-icon-el {
-    font-size: 28px;
-    line-height: 1;
-    filter: drop-shadow(0 0 8px rgba(0,212,232,0.7));
-  }
-
-  .fly-at {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 22px;
-    font-weight: 700;
-    color: #00D4E8;
-    text-shadow: 0 0 12px rgba(0,212,232,0.8);
-    line-height: 1;
-  }
-
-  .fly-label {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: rgba(0,212,232,.5);
-  }
-
-  /* ── EYEBROW ── */
-  .eyebrow {
-    display: flex; align-items: center; gap: 14px;
-    margin-bottom: 22px;
-    opacity: 0; animation: fadeUp .8s .3s cubic-bezier(.22,1,.36,1) forwards;
-  }
-  .eyebrow-line { width: 36px; height: 1px; background: #00D4E8; opacity: .5; }
-  .eyebrow-text { font-size: 13px; font-weight: 400; letter-spacing: .26em; text-transform: uppercase; color: rgba(0,212,232,.8); }
-
-  /* ── HEADLINE ── */
-  .headline {
-    font-size: 120px;
-    font-weight: 900;
-    line-height: .95;
-    letter-spacing: -.04em;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 28px;
-    opacity: 0; animation: fadeUp 1s .5s cubic-bezier(.22,1,.36,1) forwards;
-  }
-  .headline .accent { color: #00D4E8; }
-
-  /* ── SUBTEXT ── */
-  .subtext {
-    font-size: 24px;
-    font-weight: 300;
-    line-height: 1.55;
-    color: rgba(255,255,255,.6);
-    text-align: center;
-    max-width: 920px;
-    margin-bottom: 52px;
-    opacity: 0; animation: fadeUp .85s .72s cubic-bezier(.22,1,.36,1) forwards;
-  }
-  .subtext strong { color: rgba(255,255,255,.92); font-weight: 700; }
-
-  /* ── DOMAIN ROW ── */
-  .domain-row {
-    display: flex; align-items: center; gap: 24px;
-    margin-bottom: 56px;
-    opacity: 0; animation: fadeUp .8s .9s ease forwards;
-  }
-  .domain-chip {
-    display: flex; flex-direction: column;
-    align-items: center; gap: 6px;
-    padding: 18px 36px; border-radius: 12px;
-  }
-  .domain-chip.old {
-    background: rgba(255,255,255,.04);
-    border: 1px solid rgba(255,255,255,.1);
-  }
-  .domain-chip.new {
-    background: rgba(0,212,232,.07);
-    border: 1px solid rgba(0,212,232,.35);
-    box-shadow: 0 0 40px rgba(0,212,232,.08), inset 0 0 20px rgba(0,212,232,.03);
-  }
-  .chip-label {
-    font-size: 10px; font-weight: 600;
-    letter-spacing: .22em; text-transform: uppercase;
-  }
-  .domain-chip.old .chip-label { color: rgba(255,255,255,.28); }
-  .domain-chip.new .chip-label { color: rgba(0,212,232,.65); }
-  .chip-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 26px; font-weight: 700;
-  }
-  .domain-chip.old .chip-val { color: rgba(255,255,255,.4); }
-  .domain-chip.new .chip-val { color: #00D4E8; }
-
-  .domain-arrow {
-    font-size: 32px; color: rgba(0,212,232,.45);
-    animation: nudge 1.8s ease-in-out infinite;
-  }
-  @keyframes nudge { 0%,100%{transform:translateX(0);opacity:.45} 50%{transform:translateX(8px);opacity:1} }
-
-  /* ── DATE / TIME ROW ── */
-  .datetime-row {
-    display: flex; align-items: center; gap: 0;
-    opacity: 0; animation: fadeUp .8s 1.1s ease forwards;
-  }
-
-  .dt-chip {
-    display: flex; align-items: center; gap: 14px;
-    padding: 20px 44px;
-    border: 1px solid rgba(0,212,232,.2);
-    background: rgba(0,212,232,.05);
-  }
-  .dt-chip:first-child { border-radius: 14px 0 0 14px; border-right: none; }
-  .dt-chip:last-child  { border-radius: 0 14px 14px 0; border-left: 1px solid rgba(0,212,232,.1); }
-
-  .dt-icon { font-size: 34px; line-height: 1; }
-
-  .dt-text { display: flex; flex-direction: column; gap: 2px; }
-  .dt-label { font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(0,212,232,.55); }
-  .dt-value { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: -.01em; }
-
-  .dt-divider {
-    width: 1px; height: 72px;
-    background: rgba(0,212,232,.2);
-  }
-
-  /* ── KEYFRAMES ── */
-  @keyframes fadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="p">
+<img class="bg" src="https://images.unsplash.com/photo-1763162410742-1d0097cea556?q=80&w=1920&auto=format&fit=crop" alt=""/>
+<div class="ov"></div>
+<div class="tl"></div>
+<div class="co a"></div><div class="co b"></div><div class="co c"></div><div class="co d"></div>
+<canvas id="cv"></canvas>
 
-  <!-- Lenovo ThinkPad background -->
-  <img class="bg-photo"
-    src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1920&q=90"
-    alt="Lenovo ThinkPad"/>
-  <div class="overlay"></div>
-
-  <!-- Frame elements -->
-  <div class="top-line"></div>
-  <div class="corner tl"></div><div class="corner tr"></div>
-  <div class="corner bl"></div><div class="corner br"></div>
-
-  <!-- Particles -->
-  <canvas id="particles"></canvas>
-
-  <!-- MAIN COLUMN -->
-  <div class="col">
-
-    <!-- FLYING ICONS STRIP -->
-    <div class="icon-strip">
-      <div class="strip-track"></div>
-      <div id="flyZone"></div>
-    </div>
-
-    <!-- EYEBROW -->
-    <div class="eyebrow">
-      <div class="eyebrow-line"></div>
-      <span class="eyebrow-text">PwrQ Branch &nbsp;·&nbsp; Company-Wide IT Update</span>
-      <div class="eyebrow-line"></div>
-    </div>
-
-    <!-- HEADLINE -->
-    <h1 class="headline">Account <span class="accent">Migration.</span></h1>
-
-    <!-- SUBTEXT -->
-    <p class="subtext">
-      Your laptop stays. Your domain changes.<br>
-      All <strong>PwrQ</strong> laptops are moving to the <strong>Forgent Power</strong> Microsoft 365 tenant.
-    </p>
-
-    <!-- DOMAIN CHIPS -->
-    <div class="domain-row">
-      <div class="domain-chip old">
-        <span class="chip-label">Current Domain</span>
-        <span class="chip-val">@pwrq.com</span>
-      </div>
-      <div class="domain-arrow">⟶</div>
-      <div class="domain-chip new">
-        <span class="chip-label">New Domain</span>
-        <span class="chip-val">@forgentpower.com</span>
-      </div>
-    </div>
-
-    <!-- DATE / TIME -->
-    <div class="datetime-row">
-      <div class="dt-chip">
-        <div class="dt-icon">📅</div>
-        <div class="dt-text">
-          <span class="dt-label">Migration Dates</span>
-          <span class="dt-value">April 6 – 9</span>
-        </div>
-      </div>
-      <div class="dt-divider"></div>
-      <div class="dt-chip">
-        <div class="dt-icon">🕖</div>
-        <div class="dt-text">
-          <span class="dt-label">Starts Each Night</span>
-          <span class="dt-value">7:00 PM</span>
-        </div>
-      </div>
-    </div>
-
+<!-- SERVERS TOP -->
+<div class="scene">
+  <div class="server left">
+    <svg class="srv-svg" viewBox="0 0 160 210" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="6" width="144" height="198" rx="7" fill="#0d1e2c" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>
+      <rect x="16" y="14" width="128" height="6" rx="3" fill="#162030"/>
+      <rect x="16" y="26" width="128" height="24" rx="3" fill="#162d3d" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+      <rect x="22" y="32" width="64" height="12" rx="2" fill="#1e3a50"/>
+      <circle cx="122" cy="38" r="4.5" fill="rgba(255,255,255,.08)"/>
+      <circle cx="135" cy="38" r="4.5" fill="rgba(255,80,80,.12)"/>
+      <rect x="16" y="56" width="128" height="24" rx="3" fill="#152a3a" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <rect x="22" y="62" width="80" height="12" rx="2" fill="#1a3348"/>
+      <circle cx="122" cy="68" r="4.5" fill="rgba(255,255,255,.06)"/>
+      <circle cx="135" cy="68" r="4.5" fill="rgba(255,255,255,.06)"/>
+      <rect x="16" y="86" width="128" height="24" rx="3" fill="#152a3a" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <rect x="22" y="92" width="48" height="12" rx="2" fill="#1a3348"/>
+      <circle cx="122" cy="98" r="4.5" fill="rgba(255,255,255,.06)"/>
+      <circle cx="135" cy="98" r="4.5" fill="rgba(255,255,255,.06)"/>
+      <rect x="16" y="116" width="128" height="24" rx="3" fill="#111e2c" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+      <rect x="16" y="146" width="128" height="24" rx="3" fill="#111e2c" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+      <rect x="16" y="178" width="128" height="18" rx="3" fill="#0c1824"/>
+      <rect x="24" y="182" width="10" height="10" rx="2" fill="#0a1420"/>
+      <rect x="38" y="182" width="10" height="10" rx="2" fill="#0a1420"/>
+      <rect x="52" y="182" width="10" height="10" rx="2" fill="#0a1420"/>
+      <circle cx="115" cy="187" r="3.5" fill="rgba(255,255,255,.1)"/>
+      <circle cx="126" cy="187" r="3.5" fill="rgba(255,255,255,.08)"/>
+      <circle cx="137" cy="187" r="3.5" fill="rgba(255,80,80,.12)"/>
+    </svg>
+    <div class="srv-name">PWRQ</div>
+    <div class="srv-sub">Current Tenant</div>
+    <div class="lights"><div class="light"></div><div class="light"></div><div class="light"></div></div>
   </div>
 
+  <div class="xfer-wrap"><canvas id="xfer"></canvas></div>
+
+  <div class="server right">
+    <svg class="srv-svg" viewBox="0 0 160 210" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="80" cy="105" rx="72" ry="95" fill="rgba(0,212,232,.05)"/>
+      <rect x="8" y="6" width="144" height="198" rx="7" fill="#061828" stroke="rgba(0,212,232,.3)" stroke-width="1.5"/>
+      <rect x="16" y="14" width="128" height="6" rx="3" fill="#0a2035"/>
+      <rect x="16" y="26" width="128" height="24" rx="3" fill="#0d2840" stroke="rgba(0,212,232,.12)" stroke-width="1"/>
+      <rect x="22" y="32" width="64" height="12" rx="2" fill="#103255"/>
+      <circle cx="122" cy="38" r="4.5" fill="#22c55e"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
+      <circle cx="135" cy="38" r="4.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.3;1" dur="1.8s" begin=".3s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="56" width="128" height="24" rx="3" fill="#0c2438" stroke="rgba(0,212,232,.1)" stroke-width="1"/>
+      <rect x="22" y="62" width="80" height="12" rx="2" fill="#0f2e4a"/>
+      <circle cx="122" cy="68" r="4.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.2;1" dur="2s" begin=".5s" repeatCount="indefinite"/></circle>
+      <circle cx="135" cy="68" r="4.5" fill="#22c55e"><animate attributeName="opacity" values="1;.3;1" dur="1.6s" begin=".2s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="86" width="128" height="24" rx="3" fill="#0c2438" stroke="rgba(0,212,232,.08)" stroke-width="1"/>
+      <rect x="22" y="92" width="48" height="12" rx="2" fill="#0f2e4a"/>
+      <circle cx="122" cy="98" r="4.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.15;1" dur="2.3s" begin=".7s" repeatCount="indefinite"/></circle>
+      <circle cx="135" cy="98" r="4.5" fill="#22c55e"><animate attributeName="opacity" values="1;.3;1" dur="1.9s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="116" width="128" height="24" rx="3" fill="#0a1e30" stroke="rgba(0,212,232,.06)" stroke-width="1"/>
+      <rect x="22" y="122" width="40" height="12" rx="2" fill="#0d2840"/>
+      <circle cx="135" cy="128" r="4.5" fill="#00D4E8" opacity=".5"><animate attributeName="opacity" values=".5;.1;.5" dur="2.8s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="146" width="128" height="24" rx="3" fill="#0a1e30" stroke="rgba(0,212,232,.05)" stroke-width="1"/>
+      <rect x="16" y="178" width="128" height="18" rx="3" fill="#071422"/>
+      <rect x="24" y="182" width="10" height="10" rx="2" fill="#050f1a"/>
+      <rect x="38" y="182" width="10" height="10" rx="2" fill="#050f1a"/>
+      <rect x="52" y="182" width="10" height="10" rx="2" fill="#050f1a"/>
+      <circle cx="115" cy="187" r="3.5" fill="#22c55e"><animate attributeName="opacity" values="1;.4;1" dur="1.2s" repeatCount="indefinite"/></circle>
+      <circle cx="126" cy="187" r="3.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.3;1" dur="1.7s" begin=".2s" repeatCount="indefinite"/></circle>
+      <circle cx="137" cy="187" r="3.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.2;1" dur="2.1s" begin=".5s" repeatCount="indefinite"/></circle>
+    </svg>
+    <div class="srv-name">Forgent Power</div>
+    <div class="srv-sub">New Tenant</div>
+    <div class="lights"><div class="light"></div><div class="light"></div><div class="light"></div></div>
+  </div>
 </div>
 
+<!-- EYEBROW -->
+<div class="ey"><div class="el"></div><span class="et">PwrQ Branch &nbsp;·&nbsp; Company-Wide IT Update</span><div class="el"></div></div>
+
+<!-- HEADLINE -->
+<h1>Account <span>Migration.</span></h1>
+
+<!-- SUBTEXT -->
+<p class="sb">Your laptop stays. Your domain changes. All <strong>PwrQ</strong> laptops are moving to the <strong>Forgent Power</strong> Microsoft 365 tenant.</p>
+
+<!-- DOMAIN -->
+<div class="dr">
+  <div class="dc o"><span class="dl">Current Domain</span><span class="dv">@pwrq.com</span></div>
+  <div class="da">⟶</div>
+  <div class="dc n"><span class="dl">New Domain</span><span class="dv">@forgentpower.com</span></div>
+</div>
+
+<!-- DATE -->
+<div class="dtr">
+  <div class="dt"><div class="di">📅</div><div class="dx"><span class="dlb">Migration Dates</span><span class="dval">April 6 – 9</span></div></div>
+  <div class="dtdiv"></div>
+  <div class="dt"><div class="di">🕖</div><div class="dx"><span class="dlb">Starts Each Night</span><span class="dval">7:00 PM</span></div></div>
+</div>
+
+</div>
 <script>
-/* ── PARTICLES ── */
-const cv = document.getElementById('particles');
-const cx = cv.getContext('2d');
-cv.width = 1920; cv.height = 1080;
-const pts = Array.from({length:50},()=>({
-  x:Math.random()*1920, y:Math.random()*1080,
-  r:Math.random()*1.3+.3,
-  vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
-  a:Math.random()*.3+.05
-}));
-(function draw(){
-  cx.clearRect(0,0,1920,1080);
-  pts.forEach(p=>{
-    cx.beginPath(); cx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    cx.fillStyle=`rgba(0,212,232,${p.a})`; cx.fill();
-    p.x+=p.vx; p.y+=p.vy;
-    if(p.x<0)p.x=1920; if(p.x>1920)p.x=0;
-    if(p.y<0)p.y=1080; if(p.y>1080)p.y=0;
-  });
-  requestAnimationFrame(draw);
-})();
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+cv.width=1920;cv.height=1080;
+const pts=Array.from({length:40},()=>({x:Math.random()*1920,y:Math.random()*1080,r:Math.random()*1.2+.3,vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,a:Math.random()*.2+.04}));
+(function drawBg(){cx.clearRect(0,0,1920,1080);pts.forEach(p=>{cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle=`rgba(0,212,232,${p.a})`;cx.fill();p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=1920;if(p.x>1920)p.x=0;if(p.y<0)p.y=1080;if(p.y>1080)p.y=0;});requestAnimationFrame(drawBg);})();
 
-/* ── FLYING ICONS ── */
-const zone = document.getElementById('flyZone');
-const STRIP_W = 1740;
-
-const items = [
-  { type:'at' },
-  { type:'icon', val:'📁' },
-  { type:'at' },
-  { type:'icon', val:'📄' },
-  { type:'at' },
-  { type:'icon', val:'📅' },
-  { type:'icon', val:'📁' },
-  { type:'at' },
-  { type:'icon', val:'📧' },
-  { type:'at' },
-  { type:'icon', val:'🗂️' },
+const xc=document.getElementById('xfer');
+const W=1040,H=260;
+xc.width=W;xc.height=H;
+const xctx=xc.getContext('2d');
+const fileTypes=[
+  {icon:'📧',label:'Email'},{icon:'💬',label:'Teams'},{icon:'🖼️',label:'Pictures'},
+  {icon:'🎬',label:'Videos'},{icon:'📁',label:'Files'},{icon:'🗜️',label:'ZIP'},
+  {icon:'📐',label:'AutoCAD'},{icon:'📄',label:'Docs'},{icon:'📊',label:'Excel'},{icon:'📅',label:'Calendar'}
 ];
-
-const vertOffsets = [-18, 0, 18];
-let idx = 0;
-
-function launch() {
-  const def = items[idx % items.length]; idx++;
-
-  const wrap = document.createElement('div');
-  wrap.className = 'fly-item';
-  wrap.style.top = `calc(50% + ${vertOffsets[Math.floor(Math.random()*vertOffsets.length)]}px)`;
-
-  if (def.type === 'at') {
-    const a = document.createElement('div');
-    a.className = 'fly-at'; a.textContent = '@';
-    const lb = document.createElement('div');
-    lb.className = 'fly-label'; lb.textContent = 'email';
-    wrap.appendChild(a); wrap.appendChild(lb);
-  } else {
-    const ic = document.createElement('div');
-    ic.className = 'fly-icon-el'; ic.textContent = def.val;
-    const lb = document.createElement('div');
-    lb.className = 'fly-label';
-    const map = {'📁':'files','📄':'docs','📅':'calendar','📧':'mail','🗂️':'folders'};
-    lb.textContent = map[def.val] || 'data';
-    wrap.appendChild(ic); wrap.appendChild(lb);
-  }
-
-  zone.appendChild(wrap);
-
-  const dur = 2200 + Math.random() * 600;
-  let start = null;
-
-  function tick(ts) {
-    if (!start) start = ts;
-    const p = Math.min((ts - start) / dur, 1);
-    const eased = p < .5 ? 2*p*p : 1 - Math.pow(-2*p+2,2)/2;
-
-    wrap.style.left = (eased * STRIP_W) + 'px';
-    wrap.style.opacity = p < .1
-      ? (p/.1).toString()
-      : p > .88
-        ? ((1-p)/.12).toString()
-        : '1';
-
-    const bob = Math.sin(p * Math.PI * 3) * 6;
-    wrap.style.transform = `translateY(calc(-50% + ${bob}px))`;
-
-    if (p < 1) requestAnimationFrame(tick);
-    else zone.removeChild(wrap);
-  }
-
-  requestAnimationFrame(tick);
+let particles=[],fileIdx=0;
+function spawnFile(){
+  const f=fileTypes[fileIdx%fileTypes.length];fileIdx++;
+  const yBand=(Math.random()-.5)*80;
+  particles.push({icon:f.icon,label:f.label,x0:10,y0:H/2+yBand,cpx:W/2,cpy:H/2-50+(Math.random()-.5)*30,x1:W-10,y1:H/2+yBand*.4,t:0,speed:.0018+Math.random()*.0008,opacity:0});
 }
-
-setTimeout(()=>{ launch(); setInterval(launch, 550); }, 800);
+function qb(t,p0,p1,p2){const m=1-t;return m*m*p0+2*m*t*p1+t*t*p2;}
+function drawXfer(){
+  xctx.clearRect(0,0,W,H);
+  xctx.save();xctx.strokeStyle='rgba(0,212,232,.09)';xctx.lineWidth=1;xctx.setLineDash([6,14]);
+  xctx.beginPath();xctx.moveTo(10,H/2);xctx.lineTo(W-10,H/2);xctx.stroke();xctx.restore();
+  particles=particles.filter(p=>p.t<=1.02);
+  particles.forEach(p=>{
+    const px=qb(p.t,p.x0,p.cpx,p.x1),py=qb(p.t,p.y0,p.cpy,p.y1);
+    if(p.t<.12)p.opacity=p.t/.12;else if(p.t>.88)p.opacity=(1-p.t)/.12;else p.opacity=1;
+    xctx.save();xctx.globalAlpha=p.opacity;xctx.font='26px serif';xctx.textAlign='center';xctx.textBaseline='middle';xctx.fillText(p.icon,px,py);xctx.restore();
+    xctx.save();xctx.globalAlpha=p.opacity*.6;xctx.font='600 9px Sora,sans-serif';xctx.fillStyle='#00D4E8';xctx.textAlign='center';xctx.textBaseline='top';xctx.fillText(p.label.toUpperCase(),px,py+15);xctx.restore();
+    p.t+=p.speed;
+  });
+  requestAnimationFrame(drawXfer);
+}
+setTimeout(()=>{spawnFile();setInterval(spawnFile,1400);},500);
+drawXfer();
 </script>
 </body>
 </html>
