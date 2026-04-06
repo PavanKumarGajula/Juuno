@@ -8,7 +8,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1920px;height:1080px;overflow:hidden;font-family:'Sora',sans-serif;background:#020608}
 .p{width:1920px;height:1080px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
-.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(.2) saturate(.5);z-index:0}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(.15) saturate(.4);z-index:0}
 .ov{position:absolute;inset:0;z-index:1;background:
   radial-gradient(ellipse 80% 70% at 50% 50%,rgba(0,212,232,.04) 0%,transparent 65%),
   radial-gradient(ellipse 100% 45% at 50% 0%,rgba(0,0,0,.98) 0%,transparent 55%),
@@ -28,17 +28,17 @@ canvas{position:absolute;inset:0;z-index:2;pointer-events:none}
 
 .server{display:flex;flex-direction:column;align-items:center;gap:8px;width:180px}
 .srv-svg{width:140px;height:auto}
-.server.right .srv-svg{filter:drop-shadow(0 0 24px rgba(0,212,232,.4))}
+.server.right .srv-svg{filter:drop-shadow(0 0 30px rgba(0,168,150,.5))}
 .srv-name{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.server.left .srv-name{color:rgba(255,255,255,.35)}
-.server.right .srv-name{color:#00D4E8}
+.server.left .srv-name{color:#05ac80;text-shadow:0 0 10px rgba(5,172,128,.5)}
+.server.right .srv-name{color:#00d4b8;text-shadow:0 0 10px rgba(0,168,150,.6)}
 .srv-sub{font-size:10px;font-weight:300;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase}
-.server.right .srv-sub{color:rgba(0,212,232,.45)}
+.server.right .srv-sub{color:rgba(0,94,102,.8)}
 .lights{display:flex;gap:5px;margin-top:2px}
 .light{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.1)}
-.server.right .light:nth-child(1){background:#22c55e;box-shadow:0 0 6px #22c55e;animation:lp 1.5s infinite}
-.server.right .light:nth-child(2){background:#00D4E8;box-shadow:0 0 6px #00D4E8;animation:lp 1.5s .3s infinite}
-.server.right .light:nth-child(3){background:#00D4E8;box-shadow:0 0 5px #00D4E8;animation:lp 1.5s .6s infinite}
+.server.right .light:nth-child(1){background:#00a896;box-shadow:0 0 6px #00a896;animation:lp 1.5s infinite}
+.server.right .light:nth-child(2){background:#005e66;box-shadow:0 0 6px #005e66;animation:lp 1.5s .3s infinite}
+.server.right .light:nth-child(3){background:#005e66;box-shadow:0 0 5px #005e66;animation:lp 1.5s .6s infinite}
 @keyframes lp{0%,100%{opacity:1}50%{opacity:.2}}
 .xfer-wrap{position:absolute;left:180px;right:180px;top:0;bottom:40px;z-index:5}
 .xfer-wrap canvas{width:100%;height:100%}
@@ -96,28 +96,28 @@ h1 span{color:#00D4E8}
 <div class="scene">
   <div class="server left">
     <svg class="srv-svg" viewBox="0 0 160 210" xmlns="http://www.w3.org/2000/svg">
-      <rect x="8" y="6" width="144" height="198" rx="7" fill="#0d1e2c" stroke="rgba(255,255,255,.08)" stroke-width="1.5"/>
-      <rect x="16" y="14" width="128" height="6" rx="3" fill="#162030"/>
-      <rect x="16" y="26" width="128" height="24" rx="3" fill="#162d3d" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-      <rect x="22" y="32" width="64" height="12" rx="2" fill="#1e3a50"/>
+      <rect x="8" y="6" width="144" height="198" rx="7" fill="#031f18" stroke="rgba(5,172,128,.2)" stroke-width="1.5"/>
+      <rect x="16" y="14" width="128" height="6" rx="3" fill="#042e22"/>
+      <rect x="16" y="26" width="128" height="24" rx="3" fill="#063d2a" stroke="rgba(5,172,128,.1)" stroke-width="1"/>
+      <rect x="22" y="32" width="64" height="12" rx="2" fill="#0a5238"/>
       <circle cx="122" cy="38" r="4.5" fill="rgba(255,255,255,.08)"/>
       <circle cx="135" cy="38" r="4.5" fill="rgba(255,80,80,.12)"/>
-      <rect x="16" y="56" width="128" height="24" rx="3" fill="#152a3a" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <rect x="22" y="62" width="80" height="12" rx="2" fill="#1a3348"/>
+      <rect x="16" y="56" width="128" height="24" rx="3" fill="#052e20" stroke="rgba(5,172,128,.06)" stroke-width="1"/>
+      <rect x="22" y="62" width="80" height="12" rx="2" fill="#084030"/>
       <circle cx="122" cy="68" r="4.5" fill="rgba(255,255,255,.06)"/>
       <circle cx="135" cy="68" r="4.5" fill="rgba(255,255,255,.06)"/>
-      <rect x="16" y="86" width="128" height="24" rx="3" fill="#152a3a" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
-      <rect x="22" y="92" width="48" height="12" rx="2" fill="#1a3348"/>
+      <rect x="16" y="86" width="128" height="24" rx="3" fill="#052e20" stroke="rgba(5,172,128,.06)" stroke-width="1"/>
+      <rect x="22" y="92" width="48" height="12" rx="2" fill="#084030"/>
       <circle cx="122" cy="98" r="4.5" fill="rgba(255,255,255,.06)"/>
       <circle cx="135" cy="98" r="4.5" fill="rgba(255,255,255,.06)"/>
-      <rect x="16" y="116" width="128" height="24" rx="3" fill="#111e2c" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
-      <rect x="16" y="146" width="128" height="24" rx="3" fill="#111e2c" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
-      <rect x="16" y="178" width="128" height="18" rx="3" fill="#0c1824"/>
-      <rect x="24" y="182" width="10" height="10" rx="2" fill="#0a1420"/>
-      <rect x="38" y="182" width="10" height="10" rx="2" fill="#0a1420"/>
+      <rect x="16" y="116" width="128" height="24" rx="3" fill="#031a12" stroke="rgba(5,172,128,.04)" stroke-width="1"/>
+      <rect x="16" y="146" width="128" height="24" rx="3" fill="#031a12" stroke="rgba(5,172,128,.04)" stroke-width="1"/>
+      <rect x="16" y="178" width="128" height="18" rx="3" fill="#021510"/>
+      <rect x="24" y="182" width="10" height="10" rx="2" fill="#021008"/>
+      <rect x="38" y="182" width="10" height="10" rx="2" fill="#021008"/>
       <rect x="52" y="182" width="10" height="10" rx="2" fill="#0a1420"/>
-      <circle cx="115" cy="187" r="3.5" fill="rgba(255,255,255,.1)"/>
-      <circle cx="126" cy="187" r="3.5" fill="rgba(255,255,255,.08)"/>
+      <circle cx="115" cy="187" r="3.5" fill="rgba(5,172,128,.3)"/>
+      <circle cx="126" cy="187" r="3.5" fill="rgba(5,172,128,.2)"/>
       <circle cx="137" cy="187" r="3.5" fill="rgba(255,80,80,.12)"/>
     </svg>
     <div class="srv-name">PWRQ</div>
@@ -129,32 +129,32 @@ h1 span{color:#00D4E8}
 
   <div class="server right">
     <svg class="srv-svg" viewBox="0 0 160 210" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="80" cy="105" rx="72" ry="95" fill="rgba(0,212,232,.05)"/>
-      <rect x="8" y="6" width="144" height="198" rx="7" fill="#061828" stroke="rgba(0,212,232,.3)" stroke-width="1.5"/>
-      <rect x="16" y="14" width="128" height="6" rx="3" fill="#0a2035"/>
-      <rect x="16" y="26" width="128" height="24" rx="3" fill="#0d2840" stroke="rgba(0,212,232,.12)" stroke-width="1"/>
-      <rect x="22" y="32" width="64" height="12" rx="2" fill="#103255"/>
-      <circle cx="122" cy="38" r="4.5" fill="#22c55e"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
-      <circle cx="135" cy="38" r="4.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.3;1" dur="1.8s" begin=".3s" repeatCount="indefinite"/></circle>
-      <rect x="16" y="56" width="128" height="24" rx="3" fill="#0c2438" stroke="rgba(0,212,232,.1)" stroke-width="1"/>
-      <rect x="22" y="62" width="80" height="12" rx="2" fill="#0f2e4a"/>
-      <circle cx="122" cy="68" r="4.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.2;1" dur="2s" begin=".5s" repeatCount="indefinite"/></circle>
-      <circle cx="135" cy="68" r="4.5" fill="#22c55e"><animate attributeName="opacity" values="1;.3;1" dur="1.6s" begin=".2s" repeatCount="indefinite"/></circle>
-      <rect x="16" y="86" width="128" height="24" rx="3" fill="#0c2438" stroke="rgba(0,212,232,.08)" stroke-width="1"/>
-      <rect x="22" y="92" width="48" height="12" rx="2" fill="#0f2e4a"/>
-      <circle cx="122" cy="98" r="4.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.15;1" dur="2.3s" begin=".7s" repeatCount="indefinite"/></circle>
-      <circle cx="135" cy="98" r="4.5" fill="#22c55e"><animate attributeName="opacity" values="1;.3;1" dur="1.9s" repeatCount="indefinite"/></circle>
-      <rect x="16" y="116" width="128" height="24" rx="3" fill="#0a1e30" stroke="rgba(0,212,232,.06)" stroke-width="1"/>
-      <rect x="22" y="122" width="40" height="12" rx="2" fill="#0d2840"/>
-      <circle cx="135" cy="128" r="4.5" fill="#00D4E8" opacity=".5"><animate attributeName="opacity" values=".5;.1;.5" dur="2.8s" repeatCount="indefinite"/></circle>
-      <rect x="16" y="146" width="128" height="24" rx="3" fill="#0a1e30" stroke="rgba(0,212,232,.05)" stroke-width="1"/>
-      <rect x="16" y="178" width="128" height="18" rx="3" fill="#071422"/>
-      <rect x="24" y="182" width="10" height="10" rx="2" fill="#050f1a"/>
-      <rect x="38" y="182" width="10" height="10" rx="2" fill="#050f1a"/>
+      <ellipse cx="80" cy="105" rx="72" ry="95" fill="rgba(0,94,102,.08)"/>
+      <rect x="8" y="6" width="144" height="198" rx="7" fill="#011518" stroke="rgba(0,94,102,.5)" stroke-width="1.5"/>
+      <rect x="16" y="14" width="128" height="6" rx="3" fill="#001c20"/>
+      <rect x="16" y="26" width="128" height="24" rx="3" fill="#012028" stroke="rgba(0,94,102,.2)" stroke-width="1"/>
+      <rect x="22" y="32" width="64" height="12" rx="2" fill="#013040"/>
+      <circle cx="122" cy="38" r="4.5" fill="#00a896"><animate attributeName="opacity" values="1;.2;1" dur="1.4s" repeatCount="indefinite"/></circle>
+      <circle cx="135" cy="38" r="4.5" fill="#005e66"><animate attributeName="opacity" values="1;.3;1" dur="1.8s" begin=".3s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="56" width="128" height="24" rx="3" fill="#011c24" stroke="rgba(0,94,102,.15)" stroke-width="1"/>
+      <rect x="22" y="62" width="80" height="12" rx="2" fill="#012030"/>
+      <circle cx="122" cy="68" r="4.5" fill="#00a896"><animate attributeName="opacity" values="1;.2;1" dur="2s" begin=".5s" repeatCount="indefinite"/></circle>
+      <circle cx="135" cy="68" r="4.5" fill="#005e66"><animate attributeName="opacity" values="1;.3;1" dur="1.6s" begin=".2s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="86" width="128" height="24" rx="3" fill="#011c24" stroke="rgba(0,94,102,.12)" stroke-width="1"/>
+      <rect x="22" y="92" width="48" height="12" rx="2" fill="#012030"/>
+      <circle cx="122" cy="98" r="4.5" fill="#00a896"><animate attributeName="opacity" values="1;.15;1" dur="2.3s" begin=".7s" repeatCount="indefinite"/></circle>
+      <circle cx="135" cy="98" r="4.5" fill="#005e66"><animate attributeName="opacity" values="1;.3;1" dur="1.9s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="116" width="128" height="24" rx="3" fill="#011620" stroke="rgba(0,94,102,.08)" stroke-width="1"/>
+      <rect x="22" y="122" width="40" height="12" rx="2" fill="#012028"/>
+      <circle cx="135" cy="128" r="4.5" fill="#00a896" opacity=".5"><animate attributeName="opacity" values=".5;.1;.5" dur="2.8s" repeatCount="indefinite"/></circle>
+      <rect x="16" y="146" width="128" height="24" rx="3" fill="#011620" stroke="rgba(0,94,102,.06)" stroke-width="1"/>
+      <rect x="16" y="178" width="128" height="18" rx="3" fill="#010e12"/>
+      <rect x="24" y="182" width="10" height="10" rx="2" fill="#010a0c"/>
+      <rect x="38" y="182" width="10" height="10" rx="2" fill="#010a0c"/>
       <rect x="52" y="182" width="10" height="10" rx="2" fill="#050f1a"/>
-      <circle cx="115" cy="187" r="3.5" fill="#22c55e"><animate attributeName="opacity" values="1;.4;1" dur="1.2s" repeatCount="indefinite"/></circle>
-      <circle cx="126" cy="187" r="3.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.3;1" dur="1.7s" begin=".2s" repeatCount="indefinite"/></circle>
-      <circle cx="137" cy="187" r="3.5" fill="#00D4E8"><animate attributeName="opacity" values="1;.2;1" dur="2.1s" begin=".5s" repeatCount="indefinite"/></circle>
+      <circle cx="115" cy="187" r="3.5" fill="#00a896"><animate attributeName="opacity" values="1;.4;1" dur="1.2s" repeatCount="indefinite"/></circle>
+      <circle cx="126" cy="187" r="3.5" fill="#005e66"><animate attributeName="opacity" values="1;.3;1" dur="1.7s" begin=".2s" repeatCount="indefinite"/></circle>
+      <circle cx="137" cy="187" r="3.5" fill="#005e66"><animate attributeName="opacity" values="1;.2;1" dur="2.1s" begin=".5s" repeatCount="indefinite"/></circle>
     </svg>
     <div class="srv-name">Forgent Power</div>
     <div class="srv-sub">New Tenant</div>
